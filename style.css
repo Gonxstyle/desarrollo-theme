@@ -1,0 +1,15 @@
+/*
+Theme Name: Desarrollo Theme
+Author: Gonxso
+Description: Starting Life From Zero in a Different World
+Version: 0.0.1.
+Tags: Theme Otaku saves the Wardo.
+*/
+.jumbotron {
+  margin-top: 10rem;
+}
+.col-4{
+    display: inline-block;
+    margin-top: 2em;
+    
+}
