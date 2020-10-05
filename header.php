@@ -15,29 +15,24 @@
     
   </head>
 
-  <body>
+  <body <?php body_class( 'class-name' ); ?>>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Desarrollo theme</a>
+      <?php if ( function_exists( 'the_custom_logo' ) ) {
+            the_custom_logo();
+            }else{ ?>
+      <a class="navbar-brand" href="<?php bloginfo('url') ?>"><?php bloginfo('name') ?></a> <?php } ?>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">documentación</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
+          <?php mostrar_menu_principal() ?>
         </ul>
-        <form class="form-inline mt-2 mt-md-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <form action='<?php bloginfo('url') ?>' method='get' class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar" name='s' value='<?php the_search_query() ?>'>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
       </div>
     </nav>
 

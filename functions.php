@@ -42,3 +42,79 @@ add_action('wp_enqueue_scripts','encolar_script');
 
 ///---------------------thumbnail-------------------------------------------
 add_theme_support( 'post-thumbnails' );
+///----------------------WIDGET-----------------------
+function agregar_widgets() {
+                register_sidebar( [
+                                'name'          => 'widget-footer-1',
+                                'id'            => 'wf1',
+                                'before_widget' => '<div>',
+                                'after_widget'  => '</div>',
+                                'before_title'  => '<h2>',
+                                'after_title'   => '</h2>'
+                                ] );
+                                 register_sidebar( [
+                                'name'          => 'widget-footer-2',
+                                'id'            => 'wf2',
+                                'before_widget' => '<div>',
+                                'after_widget'  => '</div>',
+                                'before_title'  => '<h2>',
+                                'after_title'   => '</h2>'
+                                ] );
+                                 register_sidebar( [
+                                'name'          => 'widget-footer-3',
+                                'id'            => 'wf3',
+                                'before_widget' => '<div>',
+                                'after_widget'  => '</div>',
+                                'before_title'  => '<h2>',
+                                'after_title'   => '</h2>'
+                                ] );
+                                 register_sidebar( [
+                                'name'          => 'widget-footer-4',
+                                'id'            => 'wf4',
+                                'before_widget' => '<div>',
+                                'after_widget'  => '</div>',
+                                'before_title'  => '<h2>',
+                                'after_title'   => '</h2>'
+                                ] );
+}
+
+// Hook o gancho del widget para que se inicie
+add_action( 'widgets_init', 'agregar_widgets' );
+
+//--------------registrar menu--------------
+
+function agregar_menus(){
+register_nav_menus([
+    'principal'=>__('principal'),
+    'footer'=>__('footer')
+
+]);
+}
+add_action('init','agregar_menus');
+function mostrar_menu_principal(){
+wp_nav_menu([
+    'theme_location'    => 'principal',
+        'container'       => 'div',
+        'container_id'    => 'principal',
+        'container_class' => 'collapse navbar-collapse justify-content-end',
+        'menu_class'      => 'navbar-nav mr-auto',
+        'depth'           => 2,
+        'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+        'walker'          => new wp_bootstrap_navwalker()
+    
+    
+    ]);
+}
+function mostrar_menu_footer(){
+wp_nav_menu([
+    'theme_location'    => 'footer',
+        'container'       => 'div',
+        'container_id'    => 'footer',
+        'container_class' => 'nav',
+        'menu_class'      => 'navbar',
+        'depth'           => 2,
+        'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+        'walker'          => new wp_bootstrap_navwalker()
+    
+    ]);
+}
